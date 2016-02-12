@@ -20,6 +20,15 @@ namespace Cds
         List<Cd> Cdlist = Cd.GetAll();
         return View["index.cshtml", Cdlist];
       };
+      Get["/search"]=_=> {
+        return View["search.cshtml"];
+      };
+      Post["/search"]=_=>{
+        string returnString = Request.Form["searchString"];
+        System.Console.WriteLine(returnString);
+        List<Cd> Cdlist = Cd.SearchAll(returnString);
+        return View["search.cshtml", Cdlist];
+      };
     }
   }
 }

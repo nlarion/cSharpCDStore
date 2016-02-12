@@ -41,6 +41,21 @@ namespace Cds.Objects
     {
       return _instances;
     }
+    public static List<Cd> SearchAll(string searchThingy)
+    {
+      System.Console.WriteLine(searchThingy);
+      searchThingy.ToLower();
+      List<Cd> returnList = new List<Cd>{};
+      List<Cd> searchCds = Cd.GetAll();
+      foreach(var instance in searchCds)
+      {
+        if(instance.GetArtists().ToLower()==searchThingy.ToLower())
+        {
+          returnList.Add(instance);
+        }
+      }
+      return returnList;
+    }
     public static void Clear()
     {
       _instances.Clear();
